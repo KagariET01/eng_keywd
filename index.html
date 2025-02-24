@@ -3,26 +3,60 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link id="style_css" rel="stylesheet" type="text/css" href="/style.css">
+		<link id="style_css" rel="stylesheet" type="text/css" href="./style.css">
 	</head>
 	<body>
-		<div class="block">
+		<div class="column normal block">
 			<div>
-				<input type="file" id="file" />
-				<button id="upload">Upload</button>
+				<div class="header">
+					上傳單字表
+				</div>
+				<div class="block">
+					<div>
+						從本地上傳：
+						<input type="file" id="file" />
+						<button id="upload">Upload</button>
+					</div>
+					<hr>
+					<div>
+						使用伺服器範本：
+						<select id="keybk_list"></select>
+						<button id="choose_keybk">Upload</button>
+					</div>
+				</div>
+				
+				<div class="box">然後</div>
+		
+				<div class="header">
+					設定考試
+				</div>
+				<div class="block">
+					<div>
+						從：<input type="number" id="st" title="start from" placeholder="start from"/>
+						到：<input type="number" id="ed" title="end to(included)" placeholder="end to(included)"/>
+					</div>
+					<select id="mods"></select>
+					<button id="start">Start the test</button>
+				</div>
 			</div>
 			<div>
-				<select id="keybk_list"></select>
-				<button id="choose_keybk">Upload</button>
+				<div class="box" style="max-height: -webkit-fill-available;height: 100%;display: flex;align-items: center;">或者</div>
 			</div>
 			<div>
-				from: <input type="number" id="st" title="start from" placeholder="start from"/>
-				to: <input type="number" id="ed" title="end to(included)" placeholder="end to(included)"/>
+		
+				<div class="header">
+					載入上次狀態
+				</div>
+				<div class="block">
+					Coming Soon
+				</div>
 			</div>
-			<select id="mods"></select>
-			<button id="start">Start the test</button>
 		</div>
-		<div class="QA">
+		
+		<div class="header">
+			考試
+		</div>
+		<div class="block">
 			<div id="status"></div>
 			<div id="Q">question here</div>
 			<input type="text" id="ans" title="your ans" placeholder="your ans"/>

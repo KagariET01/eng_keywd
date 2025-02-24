@@ -1,3 +1,5 @@
+import * as roles from "./libs/mods/index.js";
+
 
 const speaker=window.speechSynthesis;
 
@@ -10,7 +12,6 @@ async function tts(txt){
 	}
 }
 
-import * as roles from "./libs/mods/index.js";
 let keybook_list=await new Promise((resolve,reject)=>{
 	let f=fetch("./keybooks/list.json");
 	f.then((res)=>{
