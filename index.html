@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link id="style_css" rel="stylesheet" type="text/css" href="/style.css">
+	</head>
+	<body>
+		<div class="block">
+			<div>
+				<input type="file" id="file" />
+				<button id="upload">Upload</button>
+			</div>
+			<div>
+				<select id="keybk_list"></select>
+				<button id="choose_keybk">Upload</button>
+			</div>
+			<div>
+				from: <input type="number" id="st" title="start from" placeholder="start from"/>
+				to: <input type="number" id="ed" title="end to(included)" placeholder="end to(included)"/>
+			</div>
+			<select id="mods"></select>
+			<button id="start">Start the test</button>
+		</div>
+		<div class="QA">
+			<div id="status"></div>
+			<div id="Q">question here</div>
+			<input type="text" id="ans" title="your ans" placeholder="your ans"/>
+			<button id="submit">Submit</button>
+		</div>
+		<button id="download">Download wrong keybook</button>
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
