@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link id="style_css" rel="stylesheet" type="text/css" href="./style.css">
 	</head>
+
 	<body>
-		<div class="column normal block">
-			<div>
-				<div class="header">
-					上傳單字表
-				</div>
-				<div class="block">
-					<div>
-						從本地上傳：
-						<input type="file" id="file" />
-						<button id="upload">Upload</button>
-					</div>
+		<div class="floor" style="z-index:1;" id="main_body">
+			<div class="box wrong" id="announcement" style="display:block;">
+				Danger Box simple
+			</div>
+			<div class="box mainbox" id="create_exam">
+				<h1>建立考卷</h1>
+				<div class="box" id="qbook">
+					<h2>上傳題庫</h2>
 					<hr>
 					<div>
-						使用伺服器範本：
-						<select id="keybk_list"></select>
-						<button id="choose_keybk">Upload</button>
+						<select id="file_type" onchange="changeFileType()" required>
+							<option value="" selected>選擇題庫讀取器</option>
+							<option value="costom">自行上傳題庫讀取器</option>
+						</select>
+						<button id="book_type_file" class="update_file">新增檔案</button>
+					</div>
+					<input id="book_file" type="file" />
+				</div>
+				<div class="box" id="cfg">
+					<h2>設定考卷</h2>
+					<hr>
+					<select id="exam_cfg_manager" required onchange="changeCFGType()">
+						<option value="" disabled selected>選擇考卷設定器</option>
+					</select>
+					<div id="cfg_manager" class="cfg_top">
+
 					</div>
 				</div>
-				
-				<div class="box">然後</div>
-		
-				<div class="header">
-					設定考試
-				</div>
-				<div class="block">
-					<div>
-						從：<input type="number" id="st" title="start from" placeholder="start from"/>
-						到：<input type="number" id="ed" title="end to(included)" placeholder="end to(included)"/>
-					</div>
-					<select id="mods"></select>
-					<button id="start">Start the test</button>
-				</div>
 			</div>
-			<div>
-				<div class="box" style="max-height: -webkit-fill-available;height: 100%;display: flex;align-items: center;">或者</div>
+			<div class="box mainbox" id="load_exam">
+				<h1>載入考卷</h1>
+				<button id="load_last_exam">載入上次未完成的考卷</button>
+				<input id="exam_file" type="file" />
 			</div>
-			<div>
-		
-				<div class="header">
-					載入上次狀態
-				</div>
-				<div class="block">
-					Coming Soon
-				</div>
+			<div id="nowq" class="box mainbox">
+				<p>
+					題目here
+				</p>
+				<p>選項1</p>
+				<p>選項2</p>
+				<p>選項3</p>
+				<p>選項4</p>
+				<button id="nextq">下一題</button>
 			</div>
 		</div>
-		
-		<div class="header">
-			考試
-		</div>
-		<div class="block">
-			<div id="status"></div>
-			<div id="Q">question here</div>
-			<input type="text" id="ans" title="your ans" placeholder="your ans"/>
-			<button id="submit">Submit</button>
-		</div>
-		<button id="download">Download wrong keybook</button>
-		<script type="module" src="index.js"></script>
+
+
+
+		<button class="floor sec_floor" style="z-index:2;border:none;display:none;" id="big_file_update">
+			<div class="box" id="big_file_update_box">
+				<h1>把檔案拖曳到這裡</h1>
+				<h2>或是點擊這裡選擇檔案</h2>
+			</div>
+		</button>
+		<div class="floor sec_floor" style="z-index:3;display:none" id="warning_box"></div>
+
+
+		<script type="module">
+			import * as script from "./script.js";
+			import * as cfg_ui_gen from "/mods/addon/cfg_ui_generator/index.js";
+			let mods={};
+			mods.exam_cfg={};
+			mods.exam_cfg.eng_keyword=import("/mods/addon/exam_cfg/eng_keyword/index.js");
+
+			for(const [key,value] of Object.entries(script)){
+				window[key]=value;
+			}
+		</script>
 	</body>
+
 </html>
